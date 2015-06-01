@@ -1,18 +1,17 @@
 #include <iostream>
 #include <cstdint>
 #include "utils.hh"
-#include "noise.hh"
-#include "sine.hh"
+#include "sequencer.hh"
 
 int main(int argc, char** argv) {
     const int samplerate = 44100;
-    syn::Noise noise;
-    syn::Sine sine(1000, samplerate);
+    syn::Sequencer sequencer(samplerate);
 
-    for (;;) {
-        const auto i = syn::Utils::dToS16(sine());
+    while (!sequencer.trackEnd()) {
+        const auto sample = sequencer.nextSample();
+        const auto out = syn::Utils::dToS16(sample);
         std::cout.write(
-                reinterpret_cast<const char*> (&i),
+                reinterpret_cast<const char*> (&out),
                 sizeof(std::int16_t));
     }
 }

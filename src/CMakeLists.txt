@@ -22,7 +22,15 @@ add_executable(syn
         syn.cc
         )
 
-target_link_libraries(syn
+add_library(syn-sequencer
+        sequencer.cc
+        )
+
+target_link_libraries(syn-sequencer
         syn-noise
         syn-sine
+        )
+
+target_link_libraries(syn
+        syn-sequencer
         )

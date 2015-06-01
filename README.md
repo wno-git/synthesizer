@@ -15,5 +15,5 @@ make -j
 ## Run
 
 ```
-./src/syn | aplay -f S16_LE -c 1 -r 44100 -V mono
+src/syn | aplay -f S16_LE -c 1 -r 44100 -V mono
 ```

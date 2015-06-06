@@ -8,8 +8,8 @@ output signal to `stdout` so you need to pipe it to some player eg. `aplay`.
 ```
 mkdir build
 cd build
-cmake ..
-make -j
+CXX=g++-5 cmake -G Ninja ..
+ninja
 ```
 
 ## Run

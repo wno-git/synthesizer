@@ -1,5 +1,5 @@
 set(CMAKE_CXX_FLAGS_LIST
-        -std=c++11
+        -std=c++14
         -Wall
         -Wextra
         -pedantic

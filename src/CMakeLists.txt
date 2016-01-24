@@ -26,9 +26,14 @@ add_library(syn-sequencer
         sequencer.cc
         )
 
+add_library(syn-track
+        track.cc
+        )
+
 target_link_libraries(syn-sequencer
         syn-noise
         syn-sine
+        syn-track
         )
 
 target_link_libraries(syn

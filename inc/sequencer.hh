@@ -12,6 +12,8 @@ public:
     bool trackEnd() const;
     double nextSample();
 
+    bool loadSong(const std::string& song);
+
 private:
     const int samplerate;
     const int track_length;

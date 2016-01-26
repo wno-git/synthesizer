@@ -1,0 +1,24 @@
+{
+    "generators": [
+        {
+            "freq": 1000.0,
+            "name": "sine1k",
+            "type": "sine"
+        },
+        {
+            "freq": 500.0,
+            "name": "sine500",
+            "type": "sine"
+        }
+    ],
+    "mixer": [
+        {
+            "in": "sine1k",
+            "level": 0.5
+        },
+        {
+            "in": "sine500",
+            "level": 0.5
+        }
+    ]
+}

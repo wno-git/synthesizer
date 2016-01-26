@@ -1,0 +1,15 @@
+language: cpp
+
+addons:
+  apt:
+    sources:
+    - ubuntu-toolchain-r-test
+    packages:
+    - g++-5
+
+before_script:
+  - export CXX=g++-5
+  - (mkdir build && cd build && cmake ..)
+
+script:
+  - cd build && make -j$(nproc)

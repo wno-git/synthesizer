@@ -3,6 +3,6 @@
 syn::Track::Track() {
 }
 
-bool syn::Track::loadFile(const std::string& file) {
+bool syn::Track::loadFile(std::istream& input) {
     return false;
 }

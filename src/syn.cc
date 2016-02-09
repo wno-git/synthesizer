@@ -1,4 +1,5 @@
 #include <iostream>
+#include <fstream>
 #include <cstdint>
 #include "utils.hh"
 #include "sequencer.hh"
@@ -17,8 +18,10 @@ int main(int argc, char** argv) {
 
     std::cerr << "Loading track " << track_file << std::endl;
 
+    std::fstream track_io {track_file, std::ios_base::in};
+
     syn::Track track;
-    if (!track.loadFile(track_file)) {
+    if (!track.loadFile(track_io)) {
         std::cerr << "Failed to load track " << track_file << std::endl;
         return 1;
     }

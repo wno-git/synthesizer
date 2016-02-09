@@ -12,9 +12,9 @@ int main(int argc, char** argv) {
         return 1;
     }
 
-    auto song = argv[1];
-    if (!sequencer.loadSong(song)) {
-        std::cerr << "Failed to load song " << song << std::endl;
+    auto track = argv[1];
+    if (!sequencer.loadTrack(track)) {
+        std::cerr << "Failed to load track " << track << std::endl;
         return 1;
     }
 

@@ -18,6 +18,6 @@ double syn::Sequencer::nextSample() {
     return sample;
 }
 
-bool syn::Sequencer::loadSong(const std::string& song) {
+bool syn::Sequencer::loadTrack(const std::string& track) {
     return false;
 }

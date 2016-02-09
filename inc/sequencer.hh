@@ -12,7 +12,7 @@ public:
     bool trackEnd() const;
     double nextSample();
 
-    bool loadSong(const std::string& song);
+    bool loadTrack(const std::string& track);
 
 private:
     const int samplerate;

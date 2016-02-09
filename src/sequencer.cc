@@ -17,7 +17,3 @@ double syn::Sequencer::nextSample() {
     ++this->track_pos;
     return sample;
 }
-
-bool syn::Sequencer::loadTrack(const std::string& track) {
-    return false;
-}

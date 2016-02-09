@@ -2,6 +2,7 @@
 #include <cstdint>
 #include "utils.hh"
 #include "sequencer.hh"
+#include "track.hh"
 
 int main(int argc, char** argv) {
     const int samplerate = 44100;
@@ -12,12 +13,13 @@ int main(int argc, char** argv) {
         return 1;
     }
 
-    auto track = argv[1];
+    auto track_file = argv[1];
 
-    std::cerr << "Loading track " << track << std::endl;
+    std::cerr << "Loading track " << track_file << std::endl;
 
-    if (!sequencer.loadTrack(track)) {
-        std::cerr << "Failed to load track " << track << std::endl;
+    syn::Track track;
+    if (!track.loadFile(track_file)) {
+        std::cerr << "Failed to load track " << track_file << std::endl;
         return 1;
     }
 

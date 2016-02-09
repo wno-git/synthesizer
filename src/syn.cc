@@ -13,6 +13,9 @@ int main(int argc, char** argv) {
     }
 
     auto track = argv[1];
+
+    std::cerr << "Loading track " << track << std::endl;
+
     if (!sequencer.loadTrack(track)) {
         std::cerr << "Failed to load track " << track << std::endl;
         return 1;

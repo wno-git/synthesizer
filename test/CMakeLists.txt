@@ -12,3 +12,4 @@ target_link_libraries(unit_track
     googletest_main
     pthread
     syn-track)
+add_test(unit_track unit_track)

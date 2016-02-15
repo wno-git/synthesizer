@@ -5,5 +5,6 @@ project(synthesizer)
 enable_testing()
 
 include_directories(inc)
+include_directories(libs)
 add_subdirectory(src)
 add_subdirectory(test)

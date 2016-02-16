@@ -14,8 +14,16 @@ add_library(syn-sequencer
         sequencer.cc
         )
 
+add_library(syn-generator
+        generator.cc
+        )
+
 add_library(syn-track
         track.cc
+        )
+
+target_link_libraries(syn-track
+        syn-generator
         )
 
 target_link_libraries(syn-sequencer

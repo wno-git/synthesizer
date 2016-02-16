@@ -17,6 +17,16 @@ add_library(syn-sequencer
 add_library(syn-generator
         generator.cc
         )
+target_link_libraries(syn-generator
+        syn-generator-sine
+        )
+
+add_library(syn-generator-sine
+        generator_sine.cc
+        )
+target_link_libraries(syn-generator-sine
+        syn-generator
+        )
 
 add_library(syn-track
         track.cc
@@ -24,6 +34,7 @@ add_library(syn-track
 
 target_link_libraries(syn-track
         syn-generator
+        syn-generator-sine
         )
 
 target_link_libraries(syn-sequencer

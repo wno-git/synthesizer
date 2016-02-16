@@ -10,11 +10,11 @@ TEST(integration_track, load_generators) {
             "generators": [
                 {
                     "name": "g1",
-                    "type": "bar"
+                    "type": "sine"
                 },
                 {
                     "name": "g2",
-                    "type": "baz"
+                    "type": "sine"
                 }
             ]
         }

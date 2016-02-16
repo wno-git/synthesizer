@@ -27,5 +27,6 @@ target_link_libraries(unit_generator
     googletest
     googletest_main
     pthread
-    syn-generator)
+    syn-generator
+    syn-generator-sine)
 add_test(unit_generator unit_generator)

@@ -20,7 +20,7 @@ size_t syn::Track::numGenerators() const {
 }
 
 syn::Generator& syn::Track::getGenerator(const std::string& name) {
-    return generators.at(name);
+    return *generators.at(name);
 }
 
 void syn::Track::createGenerators(const nlohmann::json& json) {
@@ -33,6 +33,6 @@ void syn::Track::createGenerators(const nlohmann::json& json) {
     std::for_each(generator_list->begin(), generator_list->end(),
         [this] (const nlohmann::json& json) {
             auto g = Generator::createGenerator(json);
-            this->generators.emplace(g.getName(), g);
+            this->generators.emplace(g->getName(), std::move(g));
         });
 }

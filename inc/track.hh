@@ -5,6 +5,7 @@
 #include <string>
 #include <iosfwd>
 #include <utility>
+#include <memory>
 #include <unordered_map>
 
 namespace syn {
@@ -19,7 +20,7 @@ public:
     Generator& getGenerator(const std::string& name);
 
 private:
-    std::unordered_map<std::string, Generator> generators;
+    std::unordered_map<std::string, std::unique_ptr<Generator>> generators;
 
     void createGenerators(const nlohmann::json& json);
     std::pair<std::string, Generator> createGenerator(

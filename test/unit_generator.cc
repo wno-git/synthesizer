@@ -18,3 +18,16 @@ TEST(unit_generator, missing_type) {
 
     ASSERT_THROW(syn::Generator::createGenerator(json), std::invalid_argument);
 }
+
+TEST(unit_generator, create_sine_generator) {
+    const auto json = R"(
+        {
+            "name": "test",
+            "type": "sine"
+        }
+    )"_json;
+
+    auto g = syn::Generator::createGenerator(json);
+
+    ASSERT_EQ(g->getType(), syn::Generator::Type::Sine);
+}

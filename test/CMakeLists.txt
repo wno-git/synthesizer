@@ -14,6 +14,14 @@ target_link_libraries(unit_track
     syn-track)
 add_test(unit_track unit_track)
 
+add_executable(integration_track integration_track.cc)
+target_link_libraries(integration_track
+    googletest
+    googletest_main
+    pthread
+    syn-track)
+add_test(integration_track integration_track)
+
 add_executable(unit_generator unit_generator.cc)
 target_link_libraries(unit_generator
     googletest

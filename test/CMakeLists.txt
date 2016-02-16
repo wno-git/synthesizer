@@ -13,3 +13,11 @@ target_link_libraries(unit_track
     pthread
     syn-track)
 add_test(unit_track unit_track)
+
+add_executable(unit_generator unit_generator.cc)
+target_link_libraries(unit_generator
+    googletest
+    googletest_main
+    pthread
+    syn-generator)
+add_test(unit_generator unit_generator)

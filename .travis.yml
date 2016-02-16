@@ -4,7 +4,6 @@ addons:
   apt:
     sources:
     - ubuntu-toolchain-r-test
-    - ninja-build
     packages:
     - g++-5
 
@@ -16,8 +15,8 @@ before_script:
   - ci/fetch-cmake.sh
   - export PATH=$PWD/tools/cmake-3.4.1-Linux-x86_64/bin/:$PATH
   - export CXX=g++-5
-  - (mkdir build && cd build && cmake -G Ninja ..)
+  - (mkdir build && cd build && cmake ..)
 
 script:
-  - cd build && ninja
+  - cd build && make -j$(nproc)
   - ctest

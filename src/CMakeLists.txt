@@ -1,11 +1,3 @@
-add_compile_options(
-    -std=c++14
-    -Wall
-    -Wextra
-    -pedantic
-    -g
-)
-
 add_library(syn-noise
         noise.cc
         )

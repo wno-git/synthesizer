@@ -1,14 +1,10 @@
-set(CMAKE_CXX_FLAGS_LIST
-        -std=c++14
-        -Wall
-        -Wextra
-        -pedantic
-        -g
-   )
-
-string(REPLACE ";" " "
-       CMAKE_CXX_FLAGS
-       "${CMAKE_CXX_FLAGS_LIST}")
+add_compile_options(
+    -std=c++14
+    -Wall
+    -Wextra
+    -pedantic
+    -g
+)
 
 add_library(syn-noise
         noise.cc

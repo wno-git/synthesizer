@@ -32,17 +32,7 @@ void syn::Track::createGenerators(const nlohmann::json& json) {
 
     std::for_each(generator_list->begin(), generator_list->end(),
         [this] (const nlohmann::json& json) {
-            this->generators.emplace(createGenerator(json));
+            auto g = Generator::createGenerator(json);
+            this->generators.emplace(g.getName(), g);
         });
-}
-
-std::pair<std::string, syn::Generator> syn::Track::createGenerator(
-        const nlohmann::json& json) {
-    if (!json.count("name")) {
-        throw std::invalid_argument("Missing name");
-    }
-
-    const std::string name = json["name"];
-
-    return {name, Generator(name)};
 }

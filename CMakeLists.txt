@@ -9,7 +9,7 @@ add_compile_options(
     -Wall
     -Wextra
     -pedantic
-    -g
+    -ggdb
 )
 
 include_directories(inc)

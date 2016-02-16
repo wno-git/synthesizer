@@ -15,5 +15,9 @@ syn::Generator syn::Generator::createGenerator(const nlohmann::json& json) {
 
     const std::string name = json["name"];
 
+    if (!json.count("type")) {
+        throw std::invalid_argument("Missing type");
+    }
+
     return Generator(name);
 }

@@ -8,3 +8,13 @@ TEST(unit_generator, missing_name) {
     const auto json = "{}"_json;
     ASSERT_THROW(syn::Generator::createGenerator(json), std::invalid_argument);
 }
+
+TEST(unit_generator, missing_type) {
+    const auto json = R"(
+        {
+            "name": "test"
+        }
+    )"_json;
+
+    ASSERT_THROW(syn::Generator::createGenerator(json), std::invalid_argument);
+}

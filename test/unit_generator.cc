@@ -19,6 +19,17 @@ TEST(unit_generator, missing_type) {
     ASSERT_THROW(syn::Generator::createGenerator(json), std::invalid_argument);
 }
 
+TEST(unit_generator, unrecognized_type) {
+    const auto json = R"(
+        {
+            "name": "test",
+            "type": "invalid"
+        }
+    )"_json;
+
+    ASSERT_THROW(syn::Generator::createGenerator(json), std::invalid_argument);
+}
+
 TEST(unit_generator, create_sine_generator) {
     const auto json = R"(
         {

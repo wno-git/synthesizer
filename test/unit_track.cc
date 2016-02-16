@@ -8,7 +8,7 @@ TEST(unit_track, load_empty_track) {
     std::istringstream json("{}");
 
     syn::Track track;
-    EXPECT_TRUE(track.loadFile(json));
+    ASSERT_TRUE(track.loadFile(json));
 }
 
 TEST(unit_track, load_bad_json) {

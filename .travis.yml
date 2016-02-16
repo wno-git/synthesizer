@@ -7,7 +7,13 @@ addons:
     packages:
     - g++-5
 
+cache:
+  directories:
+  - tools_cache
+
 before_script:
+  - ci/fetch-cmake.sh
+  - export PATH=$PWD/tools/cmake-3.4.1-Linux-x86_64/bin/:$PATH
   - export CXX=g++-5
   - (mkdir build && cd build && cmake ..)
 

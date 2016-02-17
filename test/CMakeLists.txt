@@ -31,6 +31,15 @@ target_link_libraries(unit_generator
     syn-generator-sine)
 add_test(unit_generator unit_generator)
 
+add_executable(unit_generator_sine unit_generator_sine.cc)
+target_link_libraries(unit_generator_sine
+    googletest
+    googletest_main
+    pthread
+    syn-generator
+    syn-generator-sine)
+add_test(unit_generator_sine unit_generator_sine)
+
 add_executable(integration_generator_factory integration_generator_factory.cc)
 target_link_libraries(integration_generator_factory
     googletest

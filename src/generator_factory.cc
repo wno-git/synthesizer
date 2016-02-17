@@ -29,7 +29,7 @@ std::unique_ptr<syn::Generator> syn::GeneratorFactory::createGenerator(
 
     switch (type) {
     case Generator::Type::Sine:
-        return std::make_unique<GeneratorSine> (name);
+        return std::make_unique<GeneratorSine> (name, json);
     default:
         throw std::invalid_argument("Unsupported type");
     }

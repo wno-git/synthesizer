@@ -10,11 +10,13 @@ TEST(integration_track, load_generators) {
             "generators": [
                 {
                     "name": "g1",
-                    "type": "sine"
+                    "type": "sine",
+                    "freq": 1000.0
                 },
                 {
                     "name": "g2",
-                    "type": "sine"
+                    "type": "sine",
+                    "freq": 500.0
                 }
             ]
         }

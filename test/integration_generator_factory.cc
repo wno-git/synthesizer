@@ -38,7 +38,8 @@ TEST(integration_generator_factory, create_sine_generator) {
     const auto json = R"(
         {
             "name": "test",
-            "type": "sine"
+            "type": "sine",
+            "freq": 1000.0
         }
     )"_json;
 

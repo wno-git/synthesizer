@@ -28,13 +28,20 @@ target_link_libraries(syn-generator-sine
         syn-generator
         )
 
+add_library(syn-generator-factory
+        generator_factory.cc
+        )
+target_link_libraries(syn-generator-factory
+        syn-generator
+        syn-generator-sine
+        )
+
 add_library(syn-track
         track.cc
         )
 
 target_link_libraries(syn-track
-        syn-generator
-        syn-generator-sine
+        syn-generator-factory
         )
 
 target_link_libraries(syn-sequencer

@@ -1,7 +1,9 @@
 #pragma once
 
+#include "json/src/json.hpp"
 #include <string>
 #include <memory>
+#include <unordered_map>
 
 namespace syn {
 
@@ -18,7 +20,14 @@ public:
 
     const std::string& getName() const;
 
+    static std::unique_ptr<Generator> createGenerator(
+            const nlohmann::json& json);
+
 private:
+    static const std::unordered_map<std::string, Type> type_mapping;
+
+    static Type strToType(const std::string& str);
+
     const std::string name;
 
 };

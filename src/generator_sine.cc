@@ -19,3 +19,10 @@ void syn::GeneratorSine::createGenerator(const nlohmann::json& json) {
 
     this->freq = json["freq"];
 }
+
+std::vector<double> syn::GeneratorSine::getBuffer(
+        const std::size_t clock,
+        const long samplerate,
+        const std::size_t n_samples) const {
+    return std::vector<double> (n_samples);
+}

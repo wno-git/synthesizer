@@ -11,6 +11,11 @@ public:
 
     Type getType() const override;
 
+    std::vector<double> getBuffer(
+        const std::size_t clock,
+        const long samplerate,
+        const std::size_t n_samples) const override;
+
 private:
     float freq;
 

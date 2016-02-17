@@ -37,3 +37,10 @@ void syn::Track::createGenerators(const nlohmann::json& json) {
             this->generators.emplace(g->getName(), std::move(g));
         });
 }
+
+std::vector<double> syn::Track::getBuffer(
+        const std::size_t clock,
+        const long samplerate,
+        const std::size_t n_samples) const {
+    return std::vector<double> (n_samples);
+}

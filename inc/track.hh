@@ -19,6 +19,11 @@ public:
     size_t numGenerators() const;
     Generator& getGenerator(const std::string& name);
 
+    std::vector<double> getBuffer(
+            const std::size_t clock,
+            const long samplerate,
+            const std::size_t n_samples) const;
+
 private:
     std::unordered_map<std::string, std::unique_ptr<Generator>> generators;
 

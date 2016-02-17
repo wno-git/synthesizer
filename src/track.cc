@@ -1,4 +1,5 @@
 #include "track.hh"
+#include "generator_factory.hh"
 #include <istream>
 #include <stdexcept>
 #include <algorithm>
@@ -32,7 +33,7 @@ void syn::Track::createGenerators(const nlohmann::json& json) {
 
     std::for_each(generator_list->begin(), generator_list->end(),
         [this] (const nlohmann::json& json) {
-            auto g = Generator::createGenerator(json);
+            auto g = GeneratorFactory::createGenerator(json);
             this->generators.emplace(g->getName(), std::move(g));
         });
 }

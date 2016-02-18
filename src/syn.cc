@@ -39,5 +39,7 @@ int main(int argc, char** argv) {
         std::cout.write(
                 reinterpret_cast<const char*> (buf_i.data()),
                 sizeof(std::int16_t) * buf_i.size());
+
+        clock += buflen;
     }
 }

@@ -42,5 +42,17 @@ std::vector<double> syn::Track::getBuffer(
         const std::size_t clock,
         const long samplerate,
         const std::size_t n_samples) const {
-    return std::vector<double> (n_samples);
+    std::vector<double> out(n_samples);
+
+    std::for_each(generators.begin(), generators.end(),
+        [&] (auto& g) {
+            const auto buf = g.second->getBuffer(clock, samplerate, n_samples);
+            std::transform(out.begin(), out.end(), buf.begin(),
+                out.begin(),
+                [] (auto& a, auto& b) {
+                    return a + b;
+                });
+        });
+
+    return out;
 }

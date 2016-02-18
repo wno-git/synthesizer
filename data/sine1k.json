@@ -1,0 +1,9 @@
+{
+    "generators": [
+        {
+            "freq": 1000.0,
+            "name": "sine1k",
+            "type": "sine"
+        }
+    ]
+}

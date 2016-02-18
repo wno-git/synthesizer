@@ -51,5 +51,5 @@ target_link_libraries(syn-sequencer
         )
 
 target_link_libraries(syn
-        syn-sequencer
+        syn-track
         )

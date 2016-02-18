@@ -12,7 +12,7 @@ public:
     Type getType() const override;
 
     std::vector<double> getBuffer(
-        const std::size_t clock,
+        std::size_t clock,
         const long samplerate,
         const std::size_t n_samples) const override;
 
@@ -20,6 +20,10 @@ private:
     float freq;
 
     void createGenerator(const nlohmann::json& json);
+
+    inline double getSample(
+            const std::size_t clock,
+            const long samplerate) const;
 
 };
 

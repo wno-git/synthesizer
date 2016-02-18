@@ -1,5 +1,8 @@
 #include "generator_sine.hh"
+#include "utils.hh"
 #include <stdexcept>
+#include <cmath>
+#include <algorithm>
 
 syn::GeneratorSine::GeneratorSine(const std::string& name_,
         const nlohmann::json& json):
@@ -21,8 +24,24 @@ void syn::GeneratorSine::createGenerator(const nlohmann::json& json) {
 }
 
 std::vector<double> syn::GeneratorSine::getBuffer(
-        const std::size_t clock,
+        std::size_t clock,
         const long samplerate,
         const std::size_t n_samples) const {
-    return std::vector<double> (n_samples);
+    std::vector<double> buf(n_samples);
+
+    std::generate(buf.begin(), buf.end(), [this, &clock, &samplerate] {
+        return this->getSample(clock++, samplerate);
+    });
+
+    return buf;
+}
+
+double syn::GeneratorSine::getSample(
+        const std::size_t clock,
+        const long samplerate) const {
+    const auto s = static_cast<double> (samplerate - 1);
+    const auto p = static_cast<double> (clock);
+    const auto t = p / s;
+
+    return std::sin(syn::Utils::pi2 * this->freq * t);
 }

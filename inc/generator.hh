@@ -19,7 +19,7 @@ public:
     virtual Type getType() const = 0;
 
     virtual std::vector<double> getBuffer(
-        const std::size_t clock,
+        std::size_t clock,
         const long samplerate,
         const std::size_t n_samples) const = 0;
 

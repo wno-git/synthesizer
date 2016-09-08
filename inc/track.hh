@@ -7,6 +7,7 @@
 #include <utility>
 #include <memory>
 #include <unordered_map>
+#include <vector>
 
 namespace syn {
 
@@ -24,11 +25,21 @@ public:
             const long samplerate,
             const std::size_t n_samples) const;
 
+    const std::string& getMixerInput(size_t index) const;
+    double getMixerLevel(size_t index) const;
+    size_t mixerInputCount() const;
+
 private:
     std::unordered_map<std::string, std::unique_ptr<Generator>> generators;
 
+    std::vector<std::pair<std::string, double>> mixer;
+
     void createGenerators(const nlohmann::json& json);
     std::pair<std::string, Generator> createGenerator(
+        const nlohmann::json& json);
+
+    void loadMixer(const nlohmann::json& json);
+    static std::pair<std::string, double> createMixerInput(
         const nlohmann::json& json);
 
 };

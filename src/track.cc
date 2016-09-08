@@ -13,6 +13,13 @@ bool syn::Track::loadFile(std::istream& input) {
 
     createGenerators(json);
 
+    try {
+        loadMixer(json);
+    } catch (const std::exception& e) {
+        throw std::invalid_argument(
+            std::string("Could not initialize mixer: ") + e.what());
+    }
+
     return true;
 }
 
@@ -36,6 +43,38 @@ void syn::Track::createGenerators(const nlohmann::json& json) {
             auto g = GeneratorFactory::createGenerator(json);
             this->generators.emplace(g->getName(), std::move(g));
         });
+}
+
+void syn::Track::loadMixer(const nlohmann::json& json) {
+    const auto& mixer_inputs = json.find("mixer");
+
+    if (mixer_inputs == json.end()) {
+        return;
+    }
+
+    for (const auto& input : *mixer_inputs) {
+        this->mixer.emplace_back(createMixerInput(input));
+    }
+}
+
+std::pair<std::string, double> syn::Track::createMixerInput(
+        const nlohmann::json& json) {
+    return {
+        json.at("in").get<std::string>(),
+        json.at("level")
+    };
+}
+
+const std::string& syn::Track::getMixerInput(size_t index) const {
+    return this->mixer.at(index).first;
+}
+
+double syn::Track::getMixerLevel(size_t index) const {
+    return this->mixer.at(index).second;
+}
+
+size_t syn::Track::mixerInputCount() const {
+    return this->mixer.size();
 }
 
 std::vector<double> syn::Track::getBuffer(

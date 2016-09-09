@@ -17,8 +17,11 @@ public:
         const long samplerate,
         const std::size_t n_samples) const override;
 
+    double getAmplitude() const;
+
 private:
     double freq;
+    double amplitude;
 
     void createGenerator(const nlohmann::json& json);
 

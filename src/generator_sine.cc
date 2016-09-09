@@ -8,7 +8,8 @@
 syn::GeneratorSine::GeneratorSine(const std::string& name_,
         const nlohmann::json& json):
         Generator(name_),
-        freq{} {
+        freq{},
+        amplitude{1.0} {
     createGenerator(json);
 }
 
@@ -22,6 +23,10 @@ void syn::GeneratorSine::createGenerator(const nlohmann::json& json) {
     }
 
     this->freq = json["freq"];
+
+    if (json.count("amplitude")) {
+        this->amplitude = json.at("amplitude").get<double>();
+    }
 }
 
 std::vector<double> syn::GeneratorSine::getBuffer(
@@ -44,5 +49,9 @@ double syn::GeneratorSine::getSample(
     const auto p = static_cast<double> (clock);
     const auto t = p / s;
 
-    return std::sin(syn::Utils::pi2 * this->freq * t);
+    return std::sin(syn::Utils::pi2 * this->freq * t) * this->amplitude;
+}
+
+double syn::GeneratorSine::getAmplitude() const {
+    return this->amplitude;
 }

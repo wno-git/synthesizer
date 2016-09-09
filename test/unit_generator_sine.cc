@@ -35,3 +35,28 @@ TEST(unit_generator_sine, generate_buffer) {
     const auto buf = g.getBuffer(clock, samplerate, n_samples);
     ASSERT_EQ(buf.size(), n_samples);
 }
+
+TEST(unit_generator_sine, default_amplitude) {
+    const auto json = R"(
+        {
+            "freq": 1000.0
+        }
+    )"_json;
+
+    syn::GeneratorSine generator("g", json);
+
+    ASSERT_EQ(generator.getAmplitude(), 1.0);
+}
+
+TEST(unit_generator_sine, static_amplitude) {
+    const auto json = R"(
+        {
+            "amplitude": 0.5,
+            "freq": 1000.0
+        }
+    )"_json;
+
+    syn::GeneratorSine generator("g", json);
+
+    ASSERT_EQ(generator.getAmplitude(), 0.5);
+}

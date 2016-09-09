@@ -81,17 +81,29 @@ std::vector<double> syn::Track::getBuffer(
         const std::size_t clock,
         const long samplerate,
         const std::size_t n_samples) const {
-    std::vector<double> out(n_samples);
+    std::vector<double> output(n_samples);
 
-    std::for_each(generators.begin(), generators.end(),
-        [&] (auto& g) {
-            const auto buf = g.second->getBuffer(clock, samplerate, n_samples);
-            std::transform(out.begin(), out.end(), buf.begin(),
-                out.begin(),
-                [] (auto& a, auto& b) {
-                    return a + b;
-                });
-        });
+    for (const auto& mixer_input : this->mixer) {
+        const Generator* generator{};
 
-    return out;
+        try {
+            generator = this->generators.at(mixer_input.first).get();
+        } catch (const std::out_of_range& e) {
+            throw std::invalid_argument(
+                std::string("Mixer input doesn't exist: " + mixer_input.first));
+        }
+
+        const double level = mixer_input.second;
+
+        const auto& input = generator->getBuffer(clock, samplerate,
+            n_samples);
+
+        std::transform(output.begin(), output.end(), input.begin(),
+                output.begin(),
+            [level] (auto& output, auto& input) {
+                return output + input * level;
+            });
+    }
+
+    return output;
 }

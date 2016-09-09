@@ -5,5 +5,11 @@
             "name": "sine1k",
             "type": "sine"
         }
+    ],
+    "mixer": [
+        {
+            "in": "sine1k",
+            "level": 1.0
+        }
     ]
 }

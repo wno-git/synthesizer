@@ -18,7 +18,7 @@ public:
         const std::size_t n_samples) const override;
 
 private:
-    float freq;
+    double freq;
 
     void createGenerator(const nlohmann::json& json);
 

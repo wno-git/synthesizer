@@ -1,8 +1,9 @@
 #include "track.hh"
 #include "generator_factory.hh"
+
+#include <algorithm>
 #include <istream>
 #include <stdexcept>
-#include <algorithm>
 
 syn::Track::Track() {
 }

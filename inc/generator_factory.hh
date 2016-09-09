@@ -1,10 +1,11 @@
 #pragma once
 
-#include "json/src/json.hpp"
 #include "generator.hh"
-#include <unordered_map>
-#include <string>
+#include "json/src/json.hpp"
+
 #include <memory>
+#include <string>
+#include <unordered_map>
 
 namespace syn {
 

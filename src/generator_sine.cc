@@ -1,8 +1,9 @@
 #include "generator_sine.hh"
 #include "utils.hh"
-#include <stdexcept>
-#include <cmath>
+
 #include <algorithm>
+#include <cmath>
+#include <stdexcept>
 
 syn::GeneratorSine::GeneratorSine(const std::string& name_,
         const nlohmann::json& json):

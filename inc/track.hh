@@ -2,11 +2,12 @@
 
 #include "generator.hh"
 #include "json/src/json.hpp"
-#include <string>
+
 #include <iosfwd>
-#include <utility>
 #include <memory>
+#include <string>
 #include <unordered_map>
+#include <utility>
 #include <vector>
 
 namespace syn {

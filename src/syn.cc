@@ -1,11 +1,12 @@
-#include <iostream>
-#include <fstream>
-#include <cstdint>
-#include <cstddef>
-#include <array>
-#include <algorithm>
 #include "utils.hh"
 #include "track.hh"
+
+#include <algorithm>
+#include <array>
+#include <cstddef>
+#include <cstdint>
+#include <fstream>
+#include <iostream>
 
 int main(int argc, char** argv) {
     if (argc != 2) {

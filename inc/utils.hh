@@ -1,8 +1,8 @@
 #pragma once
 
+#include <cmath>
 #include <cstdint>
 #include <limits>
-#include <cmath>
 
 namespace syn {
 

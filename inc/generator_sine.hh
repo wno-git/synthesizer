@@ -1,7 +1,8 @@
 #pragma once
 
-#include "json/src/json.hpp"
 #include "generator.hh"
+
+#include "json/src/json.hpp"
 
 namespace syn {
 

@@ -1,5 +1,6 @@
 #include "sine.hh"
 #include "utils.hh"
+
 #include <cmath>
 
 syn::Sine::Sine(const double freq_, const int samplerate_):

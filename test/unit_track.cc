@@ -1,8 +1,9 @@
+#include "track.hh"
+
 #include <gtest/gtest.h>
 #include <sstream>
 #include <stdexcept>
 
-#include "track.hh"
 
 TEST(unit_track, load_empty_track) {
     std::istringstream json("{}");

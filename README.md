@@ -3,7 +3,8 @@
 [![Build Status](https://travis-ci.org/wno-git/synthesizer.svg?branch=master)](https://travis-ci.org/wno-git/synthesizer)
 
 This is supposed to become a small music synthesizer program. The program will
-output signal to `stdout` so you need to pipe it to some player eg. `aplay`.
+output raw audio signal to `stdout` so you need to pipe it to a player eg.
+`aplay`. It doesn't yet play anything other than some sine waves, though...
 
 ## Build
 
@@ -17,5 +18,6 @@ ninja
 ## Run
 
 ```
-src/syn | aplay -f S16_LE -c 1 -r 44100 -V mono
+cd build
+src/syn ../data/sine1k.json | aplay -f cd -c 1
 ```
